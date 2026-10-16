@@ -35,16 +35,22 @@ def main():
     while True:
         log_state()
         for event in pygame.event.get():
-            pass
-        screen.fill("black")
-
-        for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
+
+        screen.fill("black")
 
         dt = clock.tick(60) / 1000
 
         updatable.update(dt)
+
+        for asteroid in asteroids:
+            for shot in shots:
+                if asteroid.collides_with(shot):
+                    log_event("asteroid_shot")
+                    asteroid.split()
+                    shot.kill()
+
         for draw in drawable:
             draw.draw(screen)
 

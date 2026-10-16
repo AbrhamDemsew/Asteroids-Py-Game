@@ -4,6 +4,7 @@ from constants import (
     LINE_WIDTH,
     PLAYER_RADIUS,
     PLAYER_SHOOT_COOLDOWN_SECONDS,
+    PLAYER_SHOOT_SPEED,
     PLAYER_SPEED,
     PLAYER_TURN_SPEED,
 )
@@ -61,5 +62,5 @@ class Player(CircleShape):
         new_shot = Shot(x, y)
         direction = pygame.Vector2(0,1)
         direction = direction.rotate(self.rotation)
-        new_shot.velocity = direction * PLAYER_TURN_SPEED
+        new_shot.velocity = direction * PLAYER_SHOOT_SPEED
         return new_shot
